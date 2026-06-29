@@ -11,13 +11,4 @@ public class User {
 
     private final String userName;
     private final String password;
-
-    public static class UserBuilder {
-
-        public UserBuilder password(String rawPassword) {
-            this.password = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
-            return this;
-        }
-
-    }
 }
