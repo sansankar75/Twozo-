@@ -9,7 +9,6 @@ import java.time.LocalDate;
 public class Ticket {
 
     private final String movieName;
-    private final String tickedId;
     private final String[] seats;
     private final LocalDate date;
 }
