@@ -7,6 +7,7 @@ import java.io.IOException;
 public class UserProperties {
     private static final Properties properties = new Properties();
 
+
     // Singleton Design pattern
     private UserProperties(){}
 

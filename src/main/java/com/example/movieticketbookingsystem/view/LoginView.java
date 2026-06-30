@@ -6,6 +6,8 @@ import com.example.movieticketbookingsystem.LoggerSystem.UserLogger;
 import java.util.Scanner;
 
 public class LoginView {
+    UserLogger logger = UserLogger.getInstance();
+
     public User show() {
 
         String userName = "";
@@ -25,7 +27,6 @@ public class LoginView {
             password = scan.nextLine();
 
             // logger
-            UserLogger logger = UserLogger.getInstance();
             logger.logit("User data entry completed ",
                     "Completed",
                     "Operation from LoginView file in view folder");
