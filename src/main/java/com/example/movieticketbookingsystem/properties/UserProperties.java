@@ -1,14 +1,13 @@
-package com.example.movieticketbookingsystem.Properties;
+package com.example.movieticketbookingsystem.properties;
 
 import java.io.InputStream;
 import java.util.Properties;
 import java.io.IOException;
 
 public class UserProperties {
+
     private static final Properties properties = new Properties();
 
-
-    // Singleton Design pattern
     private UserProperties(){}
 
     private static final class UserPropertiesInstance{
@@ -26,7 +25,8 @@ public class UserProperties {
     private static void loadProperties(){
         try(InputStream input = UserProperties.class
                 .getClassLoader()
-                .getResourceAsStream("application.properties")) {
+                .getResourceAsStream("application.properties"))
+        {
             if (input == null){
                 throw new RuntimeException("Application properties file is not found");
             }

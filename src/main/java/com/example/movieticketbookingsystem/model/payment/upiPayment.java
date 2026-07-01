@@ -1,4 +1,4 @@
-package com.example.movieticketbookingsystem.model.Payment;
+package com.example.movieticketbookingsystem.model.payment;
 
 import lombok.Builder;
 import lombok.Getter;

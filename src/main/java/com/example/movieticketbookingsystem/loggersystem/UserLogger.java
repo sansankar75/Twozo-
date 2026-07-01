@@ -1,4 +1,4 @@
-package com.example.movieticketbookingsystem.LoggerSystem;
+package com.example.movieticketbookingsystem.loggersystem;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.example.movieticketbookingsystem.Properties.UserProperties;
+import com.example.movieticketbookingsystem.properties.UserProperties;
 
 public class UserLogger {
 
