@@ -12,7 +12,6 @@ public class UserLogger {
 
     private UserLogger(){}
 
-    // Singleton design pattern
     private static final class UserLoggerInstance {
         private static final UserLogger INSTANCE = new UserLogger();
     }
@@ -21,10 +20,8 @@ public class UserLogger {
         return UserLoggerInstance.INSTANCE;
     }
 
-    // logger data add logic
     public void logit(String message, String status, String operation){
 
-        // timestamp
         String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern(UserProperties.getProperty("log.date.format")));
 
         try(BufferedWriter writer = new BufferedWriter(

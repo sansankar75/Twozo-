@@ -8,7 +8,6 @@ import java.util.List;
 @Getter
 @Builder
 public class Movie {
-
     private final String movieName;
     private final String time;
     private final List<String> seats;
