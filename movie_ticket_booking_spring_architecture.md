@@ -1,6 +1,6 @@
 # Movie Ticket Booking System — Spring Boot Package & Class Reference
 
-Root package: `com.example.movieticketbookingsystem`
+Root package: `com.example.SaveMySpot`
 
 Legend: `+` public · `-` private · `#` protected · `~` package-private · `{static}` = static member
 
