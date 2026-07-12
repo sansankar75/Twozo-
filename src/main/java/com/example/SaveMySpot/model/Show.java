@@ -5,14 +5,33 @@ import com.example.SaveMySpot.enums.ShowStatus;
 import java.util.Date;
 import java.sql.Time;
 
-public class Show {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+
+@Entity
+@Table(name = "show")
+public class Show implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "show_id")
     private int showId;
+
+    @Column(name = "screen_id", nullable = false)
     private int screenId;
+
+    @Column(name = "movie_id", nullable = false)
     private int movieId;
+
+    @Column(name = "show_date")
     private Date showDate;
+
+    @Column(name = "start_time")
     private Time startTime;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private ShowStatus status;
 
     public int getShowId() {

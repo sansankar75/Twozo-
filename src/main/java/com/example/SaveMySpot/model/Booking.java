@@ -1,4 +1,3 @@
-
 package com.example.SaveMySpot.model;
 
 import com.example.SaveMySpot.enums.BookingStatus;
@@ -6,15 +5,36 @@ import com.example.SaveMySpot.enums.BookingStatus;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Booking {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "booking")
+public class Booking implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id")
     private int bookingId;
+
+    @Column(name = "user_id", nullable = false)
     private int userId;
+
+    @Column(name = "show_id", nullable = false)
     private int showId;
+
+    @Column(name = "booking_date")
     private LocalDateTime bookingDate;
+
+    @Column(name = "total_amount", precision = 10, scale = 2)
     private BigDecimal totalAmount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "booking_status")
     private BookingStatus bookingStatus;
+
 
     public int getBookingId() {
         return bookingId;

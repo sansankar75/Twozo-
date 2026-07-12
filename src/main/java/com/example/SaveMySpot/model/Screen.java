@@ -1,11 +1,24 @@
 package com.example.SaveMySpot.model;
 
-public class Screen {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "screen")
+public class Screen implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "screen_id")
     private int screenId;
+
+    @Column(name = "theater_id", nullable = false)
     private int theaterId;
+
+    @Column(name = "screen_name")
     private String screenName;
+
+    @Column(name = "total_seats")
     private int totalSeats;
 
     public int getScreenId() {

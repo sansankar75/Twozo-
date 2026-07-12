@@ -4,13 +4,30 @@ import com.example.SaveMySpot.enums.SeatStatus;
 
 import java.math.BigDecimal;
 
-public class ShowSeat {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
+@Entity
+@Table(name = "show_seat")
+public class ShowSeat implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "show_seat_id")
     private int showSeatId;
+
+    @Column(name = "show_id", nullable = false)
     private int showId;
+
+    @Column(name = "seat_id", nullable = false)
     private int seatId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private SeatStatus status;
+
+    @Column(precision = 10, scale = 2)
     private BigDecimal price;
 
     public int getShowSeatId() {

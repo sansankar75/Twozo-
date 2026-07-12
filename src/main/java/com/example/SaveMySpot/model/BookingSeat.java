@@ -2,12 +2,26 @@ package com.example.SaveMySpot.model;
 
 import java.math.BigDecimal;
 
-public class BookingSeat {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
+@Entity
+@Table(name = "booking_seat")
+public class BookingSeat implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_seat_id")
     private int bookingSeatId;
+
+    @Column(name = "booking_id", nullable = false)
     private int bookingId;
+
+    @Column(name = "show_seat_id", nullable = false)
     private int showSeatId;
+
+    @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
     public int getBookingSeatId() {

@@ -3,7 +3,7 @@
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Twozo</property>
-        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.username">MovieDB</property>
         <property name="hibernate.connection.password">sankarsan</property>
         <!--create = create db everything by drop exist table
             update = update the existing table -->

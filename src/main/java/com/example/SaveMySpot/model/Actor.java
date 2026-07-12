@@ -2,12 +2,25 @@ package com.example.SaveMySpot.model;
 
 import java.util.Date;
 
-public class Actor {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "actor")
+public class Actor implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "actor_id")
     private int actorId;
+
+    @Column(name = "actor_name", nullable = false, length = 100)
     private String actorName;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
     public int getActorId() {

@@ -2,13 +2,29 @@ package com.example.SaveMySpot.model;
 
 import com.example.SaveMySpot.enums.SeatType;
 
-public class Seat {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "seat")
+public class Seat implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "seat_id")
     private int seatId;
+
+    @Column(name = "screen_id", nullable = false)
     private int screenId;
+
+    @Column(name = "row_name")
     private String rowName;
+
+    @Column(name = "seat_number")
     private int seatNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "seat_type")
     private SeatType seatType;
 
     public int getSeatId() {

@@ -1,46 +1,36 @@
 package com.example.SaveMySpot.view;
 
-import com.example.SaveMySpot.loggersystem.UserLogger;
-
-import java.util.Scanner;
+import com.example.SaveMySpot.enums.UserRole;
+import com.example.SaveMySpot.model.User;
+import com.example.SaveMySpot.util.ConsoleReader;
 
 public class LoginView {
-    private static final UserLogger logger = UserLogger.getInstance();
 
-    public void show() {
+    public User show() {
+        User user = new User();
 
-        String userName = "";
-        String password = "";
+        System.out.println("\n==========================================");
+        System.out.println("                  LOGIN");
+        System.out.println("==========================================");
+        System.out.print("Name     : ");
+        user.setName(ConsoleReader.SCANNER.nextLine());
+        System.out.print("Email    : ");
+        user.setEmail(ConsoleReader.SCANNER.nextLine());
+        System.out.print("Password : ");
+        user.setPassword(ConsoleReader.SCANNER.nextLine());
+        System.out.print("Role : ");
+        user.setRole(UserRole.valueOf(ConsoleReader.SCANNER.nextLine()));
+        System.out.println("==========================================\n");
 
-        try (Scanner scan = new Scanner(System.in)) {
-
-            // User login page
-            System.out.println("========================================");
-            System.out.println(" MOVIE TICKET BOOKING SYSTEM LOGIN PAGE ");
-            System.out.println("========================================");
-            System.out.println();
-            System.out.print("Enter Username:");
-            userName = scan.nextLine();
-
-            if(userName.isEmpty()){
-                throw new IllegalArgumentException("Username cant not be empty");
-            }
-
-            System.out.println("=========================");
-            System.out.print("Enter password:");
-            password = scan.nextLine();
-
-            if(password.isEmpty()){
-                throw new IllegalArgumentException("password cant be empty");
-            }
-
-            // logger
-            logger.logit("User login attempt for user :"+userName,
-                    "Completed",
-                    "Operation from LoginView file in view folder");
-            //User user = new User(userName, password);
-
-
-        }
+        return user;
     }
+
+    public void showError(String error){
+        System.out.println(error);
+    }
+
+    public void showMessage(String message){
+        System.out.println(message);
+    }
+
 }

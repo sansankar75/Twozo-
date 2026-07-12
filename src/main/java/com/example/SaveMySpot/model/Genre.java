@@ -1,9 +1,18 @@
 package com.example.SaveMySpot.model;
 
-public class Genre {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "genre")
+public class Genre implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "genre_id")
     private int genreId;
+
+    @Column(name = "genre_name", nullable = false, unique = true)
     private String genreName;
 
     public int getGenreId() {

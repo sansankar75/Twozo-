@@ -1,11 +1,24 @@
 package com.example.SaveMySpot.model;
 
-public class Theater {
-    private static final long serialVersionUID = 1L;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "theater")
+public class Theater implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "theater_id")
     private int theaterId;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false)
     private String city;
 
     public int getTheaterId() {
