@@ -1,0 +1,17 @@
+package com.example.SaveMySpot.show;
+
+import java.util.List;
+
+public interface ShowService {
+
+    void createShow(Show show);
+    List<Show> getShowsByMovie(int movieId);
+    void generateShowSeats(int showId);
+
+    interface SeatRepository {
+
+        void save(ShowSeat.Seat seat);
+        List<ShowSeat.Seat> findByScreen(int screenId);
+
+    }
+}

@@ -2,12 +2,25 @@
     <session-factory>
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Twozo</property>
-        <property name="hibernate.connection.username">MovieDB</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/MovieDB</property>
+        <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">sankarsan</property>
-        <!--create = create db everything by drop exist table
-            update = update the existing table -->
+
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
+
+        <mapping class="com.example.SaveMySpot.user.User"/>
+        <mapping class="com.example.SaveMySpot.movie.Movie"/>
+        <mapping class="com.example.SaveMySpot.actor.Actor"/>
+        <mapping class="com.example.SaveMySpot.movieGenre.Genre"/>
+        <mapping class="com.example.SaveMySpot.show.Show"/>
+        <mapping class="com.example.SaveMySpot.show.ShowSeat"/>
+        <mapping class="com.example.SaveMySpot.theater.Theater"/>
+        <mapping class="com.example.SaveMySpot.theater.Screen"/>
+        <mapping class="com.example.SaveMySpot.show.Seat"/>
+        <mapping class="com.example.SaveMySpot.booking.Booking"/>
+        <mapping class="com.example.SaveMySpot.booking.BookingSeat"/>
+        <mapping class="com.example.SaveMySpot.payment.Payment"/>
+
     </session-factory>
 </hibernate-configuration>
