@@ -1,26 +1,39 @@
 <hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
     <session-factory>
+        <!-- Tell Hibernate to use HikariCP -->
+        <property name="hibernate.connection.provider_class">
+            org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+        </property>
 
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/MovieDB</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">sankarsan</property>
+        <!-- HikariCP Connection Pool Settings -->
+        <property name="hibernate.hikari.dataSourceClassName">org.postgresql.ds.PGSimpleDataSource</property>
+        <property name="hibernate.hikari.dataSource.url">jdbc:postgresql://localhost:5432/MovieDB</property>
+        <property name="hibernate.hikari.dataSource.user">postgres</property>
+        <property name="hibernate.hikari.dataSource.password">sankarsan</property>
+        <property name="hibernate.hikari.maximumPoolSize">10</property>
+        <property name="hibernate.hikari.minimumIdle">5</property>
+        <property name="hibernate.hikari.idleTimeout">300000</property>
+        <property name="hibernate.hikari.connectionTimeout">30000</property>
+        <property name="hibernate.hikari.maxLifetime">1800000</property>
 
+        <!-- Hibernate Settings -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
 
-        <mapping class="com.example.SaveMySpot.user.User"/>
-        <mapping class="com.example.SaveMySpot.movie.Movie"/>
-        <mapping class="com.example.SaveMySpot.actor.Actor"/>
-        <mapping class="com.example.SaveMySpot.movieGenre.Genre"/>
-        <mapping class="com.example.SaveMySpot.show.Show"/>
-        <mapping class="com.example.SaveMySpot.show.ShowSeat"/>
-        <mapping class="com.example.SaveMySpot.theater.Theater"/>
-        <mapping class="com.example.SaveMySpot.theater.Screen"/>
-        <mapping class="com.example.SaveMySpot.show.Seat"/>
-        <mapping class="com.example.SaveMySpot.booking.Booking"/>
-        <mapping class="com.example.SaveMySpot.booking.BookingSeat"/>
-        <mapping class="com.example.SaveMySpot.payment.Payment"/>
-
+        <!-- Entity Mappings -->
+        <mapping class="com.example.SaveMySpot.entity.User"/>
+        <mapping class="com.example.SaveMySpot.entity.Movie"/>
+        <mapping class="com.example.SaveMySpot.entity.Actor"/>
+        <mapping class="com.example.SaveMySpot.entity.Genre"/>
+        <mapping class="com.example.SaveMySpot.entity.Show"/>
+        <mapping class="com.example.SaveMySpot.entity.ShowSeat"/>
+        <mapping class="com.example.SaveMySpot.entity.Theater"/>
+        <mapping class="com.example.SaveMySpot.entity.Screen"/>
+        <mapping class="com.example.SaveMySpot.entity.Seat"/>
+        <mapping class="com.example.SaveMySpot.entity.Booking"/>
+        <mapping class="com.example.SaveMySpot.entity.BookingSeat"/>
+        <mapping class="com.example.SaveMySpot.entity.Payment"/>
     </session-factory>
 </hibernate-configuration>

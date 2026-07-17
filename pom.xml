@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>SaveMySpot</artifactId>
@@ -30,11 +30,6 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-
-        <!-- ===================== LOGGING ===================== -->
-        <!-- Log4j2 is the ONLY logging implementation. It must be declared
-             and every other starter below must exclude spring-boot-starter-logging
-             (Logback), otherwise Logback wins at runtime. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
@@ -85,9 +80,10 @@
             </exclusions>
         </dependency>
 
+        <!-- FIXED: was spring-boot-starter-webmvc, which does not exist -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -95,6 +91,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <!-- ===================== JSON LOG FORMAT ===================== -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -109,6 +106,19 @@
             <version>42.7.11</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+
+        <!-- FIXED: groupId org.hibernate -> org.hibernate.orm, version aligned to hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>7.4.2.Final</version>
+        </dependency>
+
         <!-- ===================== HIBERNATE ===================== -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
@@ -134,37 +144,22 @@
         </dependency>
 
         <!-- ===================== TEST ===================== -->
+        <!-- FIXED: the five *-test starters below don't exist; Spring Boot ships
+             ONE consolidated test starter that covers actuator, jpa, security,
+             validation and web testing together. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa-test</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
+
+        <!-- FIXED: removed duplicate testng dependency; kept the pinned version
+             instead of the floating "RELEASE" version -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
