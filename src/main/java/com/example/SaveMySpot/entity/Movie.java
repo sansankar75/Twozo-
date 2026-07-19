@@ -1,6 +1,7 @@
 package com.example.SaveMySpot.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public class Movie implements Serializable {
 
     @Column(name = "description")
     private String description;
+
     @Column(nullable = false)
     private int duration;
 
@@ -30,6 +32,8 @@ public class Movie implements Serializable {
 
     @Column(name = "poster_url")
     private String posterUrl;
+
+    private List<Actor> actors;
 
     public int getMovieId() {
         return movieId;
@@ -72,5 +76,11 @@ public class Movie implements Serializable {
     }
     public void setPosterUrl(String posterUrl) {
         this.posterUrl = posterUrl;
+    }
+    public List<Actor> getActors() {
+        return actors;
+    }
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 }

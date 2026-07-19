@@ -9,6 +9,14 @@ public interface TheaterRepository {
     void save(Theater theater);
     Theater findById(int theaterId);
     List<Theater> getAllTheater();
+
+    List<Theater> getTheatersByCity(String city);
+
+    List<Theater> getTheatersShowingMovie(int movieId, java.time.LocalDate showDate);
+
+    void update(Theater theater);
+
+    void delete(int theaterId);
 }
 //select m.movie_name,th.city  from theater th
 //join screen sc

@@ -1,6 +1,7 @@
 package com.example.SaveMySpot.view;
 
 import com.example.SaveMySpot.common.ConsoleReader;
+import com.example.SaveMySpot.entity.Actor;
 import com.example.SaveMySpot.entity.Movie;
 
 import java.time.LocalDate;
@@ -29,12 +30,6 @@ public class MovieView {
         System.out.println("==========================================\n");
 
         return movie;
-    }
-
-    public int selectMovie() {
-        System.out.println("\n==========================================");
-        System.out.print("Enter Movie ID : ");
-        return ConsoleReader.SCANNER.nextInt();
     }
 
     public void displayMovie(Movie movie) {
@@ -69,6 +64,26 @@ public class MovieView {
                     movie.getTitle(),
                     movie.getLanguage(),
                     movie.getDuration());
+        }
+        System.out.println("==========================================");
+    }
+
+    public void displayMovieActors(List<Actor> actors) {
+
+        System.out.println("\n==========================================");
+        System.out.println("Your favorite Movie Actor's List !");
+        System.out.println("==========================================");
+        if (actors == null || actors.isEmpty()) {
+            System.out.println("No Actors available.");
+            return;
+        }
+        System.out.printf("%-25s %-25s %-25s %n", "Actor", "ImageURL", "DOB");
+        System.out.println("----------------------------------------------------------");
+        for (Actor actor : actors) {
+            System.out.printf("%-25s %-25s %-25s %n",
+                    actor.getActorName(),
+                    actor.getImageUrl(),
+                    actor.getDateOfBirth());
         }
         System.out.println("==========================================");
     }

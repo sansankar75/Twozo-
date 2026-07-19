@@ -45,7 +45,9 @@ public class UserController {
         switch (choice){
             case 1:
                 movieView.displayMovies(movieController.getAllMovies());
-                movieView.displayMovie(movieController.getMovieDetails(bookingView.selectMovie()));
+                int selectedMovie = bookingView.selectMovie();
+                movieView.displayMovie(movieController.getMovieDetails(selectedMovie));
+                movieView.displayMovieActors(movieController.getActorByMovie(selectedMovie));
                 break;
         }
     }

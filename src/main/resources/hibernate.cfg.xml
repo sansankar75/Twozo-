@@ -35,5 +35,7 @@
         <mapping class="com.example.SaveMySpot.entity.Booking"/>
         <mapping class="com.example.SaveMySpot.entity.BookingSeat"/>
         <mapping class="com.example.SaveMySpot.entity.Payment"/>
+        <mapping class="com.example.SaveMySpot.entity.MovieActor"/>
+        <mapping class="com.example.SaveMySpot.entity.MovieGenre"/>
     </session-factory>
 </hibernate-configuration>

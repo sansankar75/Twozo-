@@ -12,6 +12,11 @@ public interface MovieRepository {
     List<Movie> findAllMovie();
     void update(Movie movie);
     void delete(int movieId);
-    List<Actor> getMovieActor(int movieId);
-
+    List<Actor> getMovieActors(int movieId);
+    List<Movie> searchMovieByTitle(String title);
+    List<Movie> getMoviesByLanguage(String language);
+    List<Movie> getUpcomingMovies();
+    List<Movie> getNowShowingMovies();
+    List<Movie> getMoviesByGenre(int genreId);
+    long countMovies();
 }

@@ -9,4 +9,9 @@ public interface BookingSeatRepository {
     void save(BookingSeat bookingSeat);
     List<BookingSeat> findByBooking(int bookingId);
 
+    List<BookingSeat> getSeatsByBooking(int bookingId);
+
+    double getTotalPriceByBooking(int bookingId);
+
+    void delete(int bookingSeatId);
 }

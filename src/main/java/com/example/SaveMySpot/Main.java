@@ -5,27 +5,41 @@ import com.example.SaveMySpot.repo.*;
 import com.example.SaveMySpot.service.*;
 import com.example.SaveMySpot.validator.*;
 import com.example.SaveMySpot.view.*;
-import org.springframework.boot.jdbc.DataSourceUnwrapper;
 
 public class Main {
     public static void main(String[] args) {
 
         // Build dependencies first, then inject them into the controller.
         // TODO: replace no-arg constructors below with real ones once
+//         theaterRepository;
+//         screenRepository;
+//         seatRepository;
+//         movieRepository;
+//        showRepository;
         // those classes' constructors are finalized.
 
         LoginRepository loginRepository = new LoginRepositoryImpl();
+        TheaterRepository theaterRepository = new TheaterRepositoryImpl();
+        ScreenRepository screenRepository = new ScreenRepositoryImpl();
+        SeatRepository seatRepository = new SeatRepositoryImpl();
         ActorRepository actorRepository = new ActorRepositoryImpl();
         GenreRepository genreRepository = new GenreRepositoryImpl();
         ShowRepository showRepository = new ShowRepositoryImpl();
         MovieRepository movieRepository = new MovieRepositoryImpl();
 
         AdminService adminService = new AdminServiceImpl();
-        TheaterService theaterService = new TheaterServiceImpl();
+        TheaterService theaterService = new TheaterServiceImpl(theaterRepository,
+                screenRepository,
+                seatRepository,
+                movieRepository,
+                showRepository);
         LoginService loginService = new LoginServiceImpl(loginRepository);
         UserService userService = new UserServiceImpl();
         ShowService showService = new ShowServiceImpl();
-        MovieService movieService = new MovieServiceImpl(movieRepository);
+        MovieService movieService = new MovieServiceImpl(movieRepository,
+                actorRepository,
+                genreRepository,
+                showRepository);
 
         UserValidation userValidation = new UserValidation();
 
