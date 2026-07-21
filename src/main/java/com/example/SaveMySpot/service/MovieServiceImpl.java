@@ -41,6 +41,6 @@ public class MovieServiceImpl implements MovieService {
             throw new MovieNotFoundException(INVALID_MOVIE_ID_MESSAGE);
         }
 
-        return "";
+        return movieRepository.getMovieActors(movieId);
     }
 }

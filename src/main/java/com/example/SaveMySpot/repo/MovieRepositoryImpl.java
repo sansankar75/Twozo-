@@ -154,6 +154,7 @@ public class MovieRepositoryImpl implements MovieRepository {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             Movie movie = session.get(Movie.class, movieId);
+            System.out.println(movie);
             if (movie != null) session.remove(movie);
             transaction.commit();
         } catch (Exception exception) {

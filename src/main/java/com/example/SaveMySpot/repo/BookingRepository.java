@@ -9,7 +9,6 @@ public interface BookingRepository {
 
     void save(Booking booking);
     Booking findById(int bookingId);
-    List<Booking> findByUser(int userId);
 
     List<Booking> getBookingsByUser(int userId);
 

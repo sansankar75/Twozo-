@@ -26,6 +26,24 @@ public class User implements Serializable {
     @Column(nullable = false)
     private UserRole role;
 
+    @Column(nullable = false)
+    private String language;
+
+    @Column(nullable = false)
+    private String location;
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public String getLanguage() {
+        return language;
+    }
+    public String getLocation() {
+        return location;
+    }
     public int getUserId() {
         return userId;
     }

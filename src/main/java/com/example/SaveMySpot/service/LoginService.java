@@ -5,6 +5,7 @@ import com.example.SaveMySpot.entity.User;
 public interface LoginService {
 
     User login(User user);
+    void addNewUser(User user);
     String logout();
 
 }

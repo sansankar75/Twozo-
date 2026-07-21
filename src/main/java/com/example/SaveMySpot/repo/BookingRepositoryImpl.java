@@ -47,11 +47,6 @@ public class BookingRepositoryImpl implements BookingRepository {
     }
 
     @Override
-    public List<Booking> findByUser(int userId) {
-        return List.of();
-    }
-
-    @Override
     public List<Booking> getBookingsByUser(int userId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery(GET_BOOKINGS_BY_USER_QUERY, Booking.class)

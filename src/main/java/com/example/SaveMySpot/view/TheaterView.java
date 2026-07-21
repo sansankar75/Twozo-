@@ -1,7 +1,9 @@
 package com.example.SaveMySpot.view;
 
+import com.example.SaveMySpot.Enum.SeatType;
 import com.example.SaveMySpot.common.ConsoleReader;
 import com.example.SaveMySpot.entity.Screen;
+import com.example.SaveMySpot.entity.Seat;
 import com.example.SaveMySpot.entity.ShowSeat;
 import com.example.SaveMySpot.entity.Theater;
 
@@ -13,7 +15,7 @@ public class TheaterView {
         Theater theater = new Theater();
 
         System.out.println("\n==========================================");
-        System.out.println("                THEATER");
+        System.out.println("                THEATER                     ");
         System.out.println("==========================================");
         System.out.print("Theater Name : ");
         theater.setName(ConsoleReader.SCANNER.nextLine());
@@ -30,7 +32,7 @@ public class TheaterView {
         Screen screen = new Screen();
 
         System.out.println("\n==========================================");
-        System.out.println("                 SCREEN");
+        System.out.println("                 SCREEN                     ");
         System.out.println("==========================================");
         System.out.print("Screen Name  : ");
         screen.setScreenName(ConsoleReader.SCANNER.nextLine());
@@ -41,17 +43,17 @@ public class TheaterView {
         return screen;
     }
 
-    public ShowSeat.Seat addSeat() {
-        ShowSeat.Seat seat = new ShowSeat.Seat();
+    public Seat addSeat() {
+        Seat seat = new Seat();
         ShowSeat showSeat = new ShowSeat();
 
         System.out.println("\n==========================================");
-        System.out.println("                  SEAT");
+        System.out.println("                  SEAT                    ");
         System.out.println("==========================================");
         System.out.print("Seat Number  : ");
         seat.setSeatNumber(ConsoleReader.SCANNER.nextInt());
         System.out.print("Seat Type    : ");
-        seat.setSeatType(ShowSeat.SeatType.valueOf(ConsoleReader.SCANNER.nextLine()));
+        seat.setSeatType(SeatType.valueOf(ConsoleReader.SCANNER.nextLine()));
         System.out.print("Price        : ");
         showSeat.setPrice(ConsoleReader.SCANNER.nextBigDecimal());
         System.out.println("==========================================\n");
@@ -67,7 +69,7 @@ public class TheaterView {
 
     public void displayTheaters(List<Theater> theaters) {
         System.out.println("\n==========================================");
-        System.out.println("             THEATER  LIST");
+        System.out.println("             THEATER  LIST              ");
         System.out.println("==========================================");
         if (theaters == null || theaters.isEmpty()) {
             System.out.println("No theater available.");

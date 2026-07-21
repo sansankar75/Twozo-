@@ -7,19 +7,21 @@ import org.hibernate.Transaction;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    @Override
-    public void save(User user) {
+    public void addUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
             transaction = session.beginTransaction();
             session.persist(user);
             transaction.commit();
         } catch (Exception exception) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             throw exception;
+        } finally {
+            session.close();
         }
     }
 
@@ -39,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
             session.merge(user);
             transaction.commit();
         } catch (Exception exception) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             throw exception;

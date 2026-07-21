@@ -75,6 +75,18 @@ public class BookingView {
         System.out.println("========================================================");
     }
 
+    // Generate the Movie Seat Booking Layout
+    public void seatLayoutGenerate(int seatCount) {
+        while(seatCount>0){
+            for(int i=0; i<10; i++){
+                if(seatCount==0){break;}
+                System.out.print("   ✅" ) ;
+                seatCount = seatCount - 1;
+            }
+            System.out.println();
+        }
+    }
+
     public void showError(String error){
         System.out.println("We are sorry to say this: " + error);
     }

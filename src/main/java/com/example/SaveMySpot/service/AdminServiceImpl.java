@@ -27,19 +27,30 @@ public class AdminServiceImpl implements AdminService {
             throw new IllegalArgumentException("Movie cannot be null.");
         }
 
-        Movie existingMovie = movieRepository.findById(movie.getMovieId());
+        try {
+            Movie existingMovie = movieRepository.findById(movie.getMovieId());
 
-        if (existingMovie == null) {
-            throw new RuntimeException("Movie not found.");
+            if (existingMovie == null) {
+                throw new RuntimeException("Movie not found.");
+            }
+            if (movie.getTitle() == null || movie.getTitle().trim().isEmpty()) {
+                throw new IllegalArgumentException("Movie title is required.");
+            }
+            if (movie.getDuration() <= 0) {
+                throw new IllegalArgumentException("Invalid movie duration.");
+            }
+
+            existingMovie.setTitle(movie.getTitle());
+            existingMovie.setDescription(movie.getDescription());
+            existingMovie.setDuration(movie.getDuration());
+            existingMovie.setLanguage(movie.getLanguage());
+            existingMovie.setReleaseDate(movie.getReleaseDate());
+            existingMovie.setPosterUrl(movie.getPosterUrl());
+
+            movieRepository.update(existingMovie);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
         }
-        existingMovie.setTitle(movie.getTitle());
-        existingMovie.setDescription(movie.getDescription());
-        existingMovie.setDuration(movie.getDuration());
-        existingMovie.setLanguage(movie.getLanguage());
-        existingMovie.setReleaseDate(movie.getReleaseDate());
-        existingMovie.setPosterUrl(movie.getPosterUrl());
-
-        movieRepository.update(existingMovie);
     }
 
     @Override

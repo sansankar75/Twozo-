@@ -5,11 +5,14 @@ import com.example.SaveMySpot.entity.Booking;
 import com.example.SaveMySpot.repo.BookingRepository;
 import com.example.SaveMySpot.repo.BookingRepositoryImpl;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository = new BookingRepositoryImpl();
 
     @Override
-    public Booking createBooking(Booking booking) {
+    public Booking createBooking(Booking booking, List<Integer> seatIds) {
         if (booking == null) {
             throw new IllegalArgumentException("Booking cannot be null.");
         }
@@ -33,4 +36,20 @@ public class BookingServiceImpl implements BookingService {
     public boolean checkAvailability(int showId) {
         return true;
     }
+
+    @Override
+    public List<Booking> getBookingsByUser(int userId) {
+        return bookingRepository.getBookingsByUser(userId);
+    }
+
+    @Override
+    public BigDecimal getTotalPrice(int bookingId) {
+        return null;
+    }
+
+    @Override
+    public Booking getBookingById(int bookingId) {
+        return null;
+    }
+
 }

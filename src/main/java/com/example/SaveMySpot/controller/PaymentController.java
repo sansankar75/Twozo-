@@ -9,9 +9,10 @@ public class PaymentController {
     private final PaymentView paymentView;
     private final PaymentService paymentService;
 
-    public PaymentController() {
-        paymentView = new PaymentView();
-        paymentService = new PaymentServiceImpl();
+    public PaymentController(PaymentView paymentView, PaymentService paymentService) {
+
+        this.paymentView = paymentView;
+        this.paymentService = paymentService;
     }
     public Payment processPayment(Payment payment) {
         Payment savedPayment = paymentService.processPayment(payment);

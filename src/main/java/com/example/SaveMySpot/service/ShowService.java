@@ -1,5 +1,6 @@
 package com.example.SaveMySpot.service;
 
+import com.example.SaveMySpot.entity.Seat;
 import com.example.SaveMySpot.entity.Show;
 import com.example.SaveMySpot.entity.ShowSeat;
 
@@ -11,10 +12,7 @@ public interface ShowService {
     List<Show> getShowsByMovie(int movieId);
     void generateShowSeats(int showId);
 
-    interface SeatRepository {
+    void updateShow(Show show);
 
-        void save(ShowSeat.Seat seat);
-        List<ShowSeat.Seat> findByScreen(int screenId);
-
-    }
+    void deleteShow(int showId);
 }

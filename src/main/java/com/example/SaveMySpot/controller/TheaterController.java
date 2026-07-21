@@ -1,12 +1,9 @@
 package com.example.SaveMySpot.controller;
 
+import com.example.SaveMySpot.entity.*;
 import com.example.SaveMySpot.service.TheaterService;
 import com.example.SaveMySpot.service.TheaterServiceImpl;
 import com.example.SaveMySpot.view.TheaterView;
-import com.example.SaveMySpot.entity.Movie;
-import com.example.SaveMySpot.entity.Screen;
-import com.example.SaveMySpot.entity.ShowSeat;
-import com.example.SaveMySpot.entity.Theater;
 
 import java.util.List;
 
@@ -15,10 +12,11 @@ public class TheaterController {
     private final TheaterView theaterView;
     private final TheaterService theaterService;
 
-    public TheaterController() {
-        theaterView = new TheaterView();
-        theaterService = new TheaterServiceImpl();
+    public TheaterController(TheaterView theaterView, TheaterService theaterService) {
+        this.theaterView = theaterView;
+        this.theaterService = theaterService;
     }
+
 
     public void addTheater(Theater theater) {
         theaterService.addTheater(theater);
@@ -30,7 +28,7 @@ public class TheaterController {
         theaterView.showMessage("Screen added successfully.");
     }
 
-    public void addSeat(ShowSeat.Seat seat) {
+    public void addSeat(Seat seat) {
         theaterService.addSeat(seat);
         theaterView.showMessage("Seat added successfully.");
     }
@@ -47,11 +45,7 @@ public class TheaterController {
         return theaterService.getScreensByTheater(theaterId);
     }
 
-    public List<ShowSeat.Seat> getSeatsByScreen(int screenId) {
-        return theaterService.getSeatsByScreen(screenId);
-    }
-
-    public List<Movie> getMoviesByTheater(int theaterId) {
-        return theaterService.getMoviesByTheater(theaterId);
+    public List<Movie> getMoviesByTheater(int theaterId , int movieId) {
+        return theaterService.getMoviesByTheater(theaterId, movieId);
     }
 }

@@ -12,6 +12,7 @@ public class MovieView {
     public Movie addMovie() {
         Movie movie = new Movie();
 
+        ConsoleReader.SCANNER.nextLine();
         System.out.println("\n==========================================");
         System.out.println("                 MOVIE");
         System.out.println("==========================================");
@@ -23,6 +24,7 @@ public class MovieView {
         movie.setLanguage(ConsoleReader.SCANNER.nextLine());
         System.out.print("Duration (Min) : ");
         movie.setDuration(ConsoleReader.SCANNER.nextInt());
+        ConsoleReader.SCANNER.nextLine();
         System.out.print("Release Date (yyyy-MM-dd) : ");
         movie.setReleaseDate(LocalDate.parse(ConsoleReader.SCANNER.nextLine()));
         System.out.print("Poster URL     : ");
@@ -59,11 +61,13 @@ public class MovieView {
         System.out.printf("%-5s %-25s %-15s %-10s%n", "ID", "Title", "Language", "Duration");
         System.out.println("----------------------------------------------------------");
         for (Movie movie : movies) {
-            System.out.printf("%-5d %-25s %-15s %-10d%n ",
-                    movie.getMovieId(),
-                    movie.getTitle(),
-                    movie.getLanguage(),
-                    movie.getDuration());
+            if(movie.getStatus().equals("Active")) {
+                System.out.printf("%-5d %-25s %-15s %-10d%n ",
+                        movie.getMovieId(),
+                        movie.getTitle(),
+                        movie.getLanguage(),
+                        movie.getDuration());
+            }
         }
         System.out.println("==========================================");
     }

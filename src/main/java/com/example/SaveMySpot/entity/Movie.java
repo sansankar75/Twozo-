@@ -33,7 +33,8 @@ public class Movie implements Serializable {
     @Column(name = "poster_url")
     private String posterUrl;
 
-    private List<Actor> actors;
+    @Column(name = "status")
+    private String Status = "Active";
 
     public int getMovieId() {
         return movieId;
@@ -77,10 +78,25 @@ public class Movie implements Serializable {
     public void setPosterUrl(String posterUrl) {
         this.posterUrl = posterUrl;
     }
-    public List<Actor> getActors() {
-        return actors;
+    public String getStatus(){
+        return this.Status;
     }
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
+    public void setStatus(String Status){
+        this.Status = Status;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movieId=" + movieId +
+                ", title='" + (title != null ? title : "N/A") + '\'' +
+                ", description='" + (description != null ? description : "N/A") + '\'' +
+                ", duration=" + duration +
+                ", language='" + (language != null ? language : "N/A") + '\'' +
+                ", releaseDate=" + (releaseDate != null ? releaseDate : "N/A") +
+                ", posterUrl='" + (posterUrl != null ? posterUrl : "N/A") + '\'' +
+                ", movieStatus='" + (Status != null ? Status : "N/A") + '\'' +
+                '}';
+    }
+
 }

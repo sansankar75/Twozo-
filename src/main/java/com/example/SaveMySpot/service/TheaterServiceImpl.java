@@ -1,10 +1,6 @@
 package com.example.SaveMySpot.service;
 
-import com.example.SaveMySpot.Enum.ShowStatus;
-import com.example.SaveMySpot.entity.Movie;
-import com.example.SaveMySpot.entity.Screen;
-import com.example.SaveMySpot.entity.ShowSeat;
-import com.example.SaveMySpot.entity.Theater;
+import com.example.SaveMySpot.entity.*;
 import com.example.SaveMySpot.repo.*;
 
 import java.util.ArrayList;
@@ -12,11 +8,23 @@ import java.util.List;
 
 public class TheaterServiceImpl implements TheaterService {
 
-    private final TheaterRepository theaterRepository = new TheaterRepositoryImpl();
-    private final ScreenRepository screenRepository = new ScreenRepositoryImpl();
-    private final ShowService.SeatRepository seatRepository = new ShowStatus.SeatRepositoryImpl();
-    private final MovieRepository movieRepository = new MovieRepositoryImpl();
-    private final ShowRepository showRepository = new ShowRepositoryImpl();
+    private final TheaterRepository theaterRepository;
+    private final ScreenRepository screenRepository ;
+    private final SeatRepository seatRepository ;
+    private final MovieRepository movieRepository ;
+    private final ShowRepository showRepository ;
+
+    public TheaterServiceImpl(TheaterRepository theaterRepository,
+                              ScreenRepository screenRepository,
+                              SeatRepository seatRepository,
+                              MovieRepository movieRepository,
+                              ShowRepository showRepository) {
+        this.theaterRepository = theaterRepository;
+        this.screenRepository = screenRepository;
+        this.seatRepository = seatRepository;
+        this.movieRepository = movieRepository;
+        this.showRepository = showRepository;
+    }
 
     @Override
     public void addTheater(Theater theater) {
@@ -35,7 +43,7 @@ public class TheaterServiceImpl implements TheaterService {
     }
 
     @Override
-    public void addSeat(ShowSeat.Seat seat) {
+    public void addSeat(Seat seat) {
         if (seat == null) {
             throw new IllegalArgumentException("Seat cannot be null.");
         }
@@ -60,34 +68,21 @@ public class TheaterServiceImpl implements TheaterService {
     }
 
     @Override
-    public List<ShowSeat.Seat> getSeatsByScreen(int screenId) {
-
-        return seatRepository.findByScreen(screenId);
-    }
-
-//    @Override
-//    public List<Theater> getAllTheaters() {
-//
-//        // Add findAll() in TheaterRepository if not already present.
-//        return theaterRepository();
-//    }
-
-    @Override
-    public List<Movie> getMoviesByTheater(int theaterId) {
+    public List<Movie> getMoviesByTheater(int theaterId, int movieId) {
 
         List<Movie> movies = new ArrayList<>();
 
         List<Screen> screens = screenRepository.findByTheater(theaterId);
 
-//        for (Screen screen : screens) {
-//            showRepository.findByScreen(screen.getScreenId())
-//                    .forEach(show -> {
-//                        Movie movie = movieRepository.findById();
-//                        if (movie != null && !movies.contains(movie)) {
-//                            movies.add(movie);
-//                        }
-//                    });
-//        }
+        for (Screen screen : screens) {
+            showRepository.findByScreen(screen.getScreenId())
+                    .forEach(show -> {
+                        Movie movie = movieRepository.findById(movieId);
+                        if (movie != null && !movies.contains(movie)) {
+                            movies.add(movie);
+                        }
+                    });
+        }
 
         return movies;
     }

@@ -14,7 +14,7 @@ public class UserValidation {
             "^[a-zA-Z\\s]{3,30}$"
     );
     private static final Pattern PASSWORD_PATTERN = Pattern.compile(
-            "^(?=.*[a-zA-Z])(?=.*[\\d@$!%*?&])[a-zA-Z\\d@$!%*?&]{5,}$"
+            "^(?=.*[a-zA-Z])(?=.*[\\d@$!%*?&])[a-zA-Z\\d@$!%*?&]{5,20}$"
     );
 
     public UserValidation() {

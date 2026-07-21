@@ -1,5 +1,7 @@
 package com.example.SaveMySpot.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jakarta.persistence.*;
@@ -47,4 +49,18 @@ public class Actor implements Serializable {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-}
+
+
+        @Override
+        public String toString () {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = dateOfBirth != null ? sdf.format(dateOfBirth) : "N/A";
+
+            return "Actor{" +
+                    "actorId=" + actorId +
+                    ", actorName='" + (actorName != null ? actorName : "N/A") + '\'' +
+                    ", imageUrl='" + (imageUrl != null ? imageUrl : "N/A") + '\'' +
+                    ", dateOfBirth=" + formattedDate +
+                    '}';
+        }
+    }
